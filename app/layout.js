@@ -11,7 +11,7 @@ import "./globals.css";
 import CursorSpotlight from "../components/CursorSpotlight/CursorSpotlight";
 import AIChatbot from "../components/AIChatbot/AIChatbot";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://cinematic-portfolio.vercel.app";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://cinematic-portfolio-vtll.vercel.app";
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
