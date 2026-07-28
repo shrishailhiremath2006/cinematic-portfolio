@@ -1,0 +1,272 @@
+.section {
+  position: relative;
+  z-index: 5;
+  background: var(--color-void);
+  padding: 10vh 6vw 12vh;
+  border-top: 1px solid var(--color-glass-border);
+  overflow: hidden;
+}
+
+.section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 15% 30%, rgba(95, 178, 255, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 70%, rgba(167, 139, 250, 0.05) 0%, transparent 45%);
+  pointer-events: none;
+}
+
+/* ---------- Header ------------------------------------------------ */
+
+.header {
+  max-width: 680px;
+  margin-bottom: 5rem;
+}
+
+.eyebrow {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-ember-soft);
+  margin: 0 0 1.2rem;
+}
+
+.heading {
+  font-family: var(--font-display), serif;
+  font-weight: 500;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  line-height: 1.1;
+  color: var(--color-paper);
+  margin: 0 0 1.2rem;
+}
+
+.heading em {
+  font-style: italic;
+  color: var(--color-ember-soft);
+}
+
+.subheading {
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+  line-height: 1.65;
+  color: var(--color-ash);
+  margin: 0;
+  max-width: 52ch;
+}
+
+/* ---------- Timeline container ------------------------------------ */
+
+.timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* Vertical center line */
+.line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    var(--color-ember-soft) 8%,
+    var(--color-ember-soft) 92%,
+    transparent 100%
+  );
+  opacity: 0.3;
+  transform-origin: top center;
+}
+
+/* ---------- Entry -------------------------------------------------- */
+
+.entry {
+  position: relative;
+  display: flex;
+  width: calc(50% - 2.5rem);
+}
+
+.entryLeft {
+  align-self: flex-start;
+  margin-right: auto;
+  padding-right: 0;
+}
+
+.entryRight {
+  align-self: flex-start;
+  margin-left: auto;
+  padding-left: 0;
+}
+
+/* Dot on the center line */
+.dot {
+  position: absolute;
+  top: 1.8rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent, var(--color-ember));
+  border: 2px solid var(--color-void);
+  box-shadow: 0 0 12px var(--accent, var(--color-ember));
+  z-index: 2;
+}
+
+.entryLeft .dot {
+  right: -3.05rem;
+}
+
+.entryRight .dot {
+  left: -3.05rem;
+}
+
+/* ---------- Card --------------------------------------------------- */
+
+.card {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.8rem 1.8rem 2rem;
+  border: 1px solid var(--color-glass-border);
+  background: var(--color-void-soft);
+  overflow: hidden;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.card:hover {
+  background: color-mix(in srgb, var(--accent) 5%, var(--color-void-soft));
+  border-color: color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+.accentLine {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent) 0%, transparent 100%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card:hover .accentLine {
+  transform: scaleX(1);
+}
+
+/* ---------- Card header row --------------------------------------- */
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+}
+
+.icon {
+  font-size: 1.1rem;
+}
+
+.period {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  color: var(--color-ash);
+  text-transform: uppercase;
+}
+
+.badge {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.22rem 0.6rem;
+  border-radius: 999px;
+  margin-left: auto;
+}
+
+.badgeWork {
+  color: var(--color-ember-soft);
+  background: rgba(255, 138, 61, 0.12);
+  border: 1px solid rgba(255, 138, 61, 0.25);
+}
+
+.badgeEdu {
+  color: var(--color-monitor);
+  background: rgba(95, 178, 255, 0.1);
+  border: 1px solid rgba(95, 178, 255, 0.22);
+}
+
+/* ---------- Card content ------------------------------------------ */
+
+.cardTitle {
+  font-family: var(--font-display), serif;
+  font-weight: 500;
+  font-size: clamp(1rem, 1.8vw, 1.3rem);
+  color: var(--color-paper);
+  margin: 0;
+  line-height: 1.25;
+}
+
+.org {
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent, var(--color-ember-soft));
+  margin: 0;
+}
+
+.location {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  color: var(--color-ash);
+  margin: 0;
+}
+
+.tagList {
+  list-style: none;
+  margin: 0.4rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tag {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ash);
+  padding: 0.25rem 0.6rem;
+  border: 1px solid var(--color-glass-border);
+  border-radius: 999px;
+}
+
+/* ---------- Responsive -------------------------------------------- */
+
+@media (max-width: 700px) {
+  .line {
+    left: 1rem;
+  }
+
+  .entry {
+    width: calc(100% - 2.5rem);
+    margin-left: 2.5rem !important;
+    margin-right: 0 !important;
+  }
+
+  .entryLeft .dot,
+  .entryRight .dot {
+    left: -2.05rem;
+    right: auto;
+  }
+}

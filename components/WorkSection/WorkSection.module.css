@@ -1,0 +1,284 @@
+/* ---------- Section shell ---------------------------------------- */
+
+.section {
+  position: relative;
+  z-index: 5;
+  background: var(--color-void);
+  padding: 10vh 6vw 12vh;
+  border-top: 1px solid var(--color-glass-border);
+  overflow: hidden;
+}
+
+/* Subtle radial glow behind the whole section */
+.section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 80% 0%, rgba(255, 138, 61, 0.06) 0%, transparent 55%),
+    radial-gradient(ellipse at 10% 90%, rgba(95, 178, 255, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* ---------- Header ------------------------------------------------ */
+
+.header {
+  max-width: 680px;
+  margin-bottom: 5rem;
+}
+
+.eyebrow {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-ember-soft);
+  margin: 0 0 1.2rem;
+}
+
+.heading {
+  font-family: var(--font-display), serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  line-height: 1.1;
+  color: var(--color-paper);
+  margin: 0 0 1.2rem;
+}
+
+.heading em {
+  font-style: italic;
+  color: var(--color-ember-soft);
+}
+
+.subheading {
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+  line-height: 1.65;
+  color: var(--color-ash);
+  margin: 0;
+  max-width: 52ch;
+}
+
+/* ---------- Project grid ------------------------------------------ */
+
+.grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5px;
+}
+
+/* ---------- Card -------------------------------------------------- */
+
+.card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--color-glass-border);
+  background: var(--color-void-soft);
+  transition: background 0.35s ease, border-color 0.35s ease;
+}
+
+.card:hover {
+  background: var(--accent-soft);
+  border-color: color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+/* Hover glow behind card */
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 30% 40%,
+    color-mix(in srgb, var(--accent) 14%, transparent) 0%,
+    transparent 65%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.card:hover::after {
+  opacity: 1;
+}
+
+/* Accent line at the top of each card */
+.cardAccentLine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--accent) 0%,
+    color-mix(in srgb, var(--accent) 20%, transparent) 100%
+  );
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card:hover .cardAccentLine {
+  transform: scaleX(1);
+}
+
+/* Anchor fills the card */
+.cardLink {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  padding: 2.6rem 2.4rem 2.8rem;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* ---------- Card internals ---------------------------------------- */
+
+.cardIndex {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  opacity: 0.7;
+}
+
+.cardBody {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.cardTitle {
+  font-family: var(--font-display), serif;
+  font-weight: 500;
+  font-size: clamp(1.15rem, 2vw, 1.55rem);
+  line-height: 1.2;
+  color: var(--color-paper);
+  margin: 0;
+  transition: color 0.25s ease;
+}
+
+.card:hover .cardTitle {
+  color: color-mix(in srgb, var(--accent) 70%, var(--color-paper));
+}
+
+.cardDesc {
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--color-ash);
+  margin: 0;
+}
+
+/* ---------- Tag list ---------------------------------------------- */
+
+.tagList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.tag {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.63rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-paper);
+  opacity: 0.55;
+  padding: 0.3rem 0.65rem;
+  border: 1px solid var(--color-glass-border);
+  border-radius: 999px;
+  transition: opacity 0.2s ease, border-color 0.2s ease;
+}
+
+.card:hover .tag {
+  opacity: 0.85;
+  border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+}
+
+/* ---------- Card footer row --------------------------------------- */
+
+.cardFooter {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: auto;
+}
+
+.cardArrow {
+  flex-shrink: 0;
+  color: var(--accent);
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  display: flex;
+  align-items: center;
+}
+
+.card:hover .cardArrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ---------- GitHub CTA -------------------------------------------- */
+
+.cta {
+  margin-top: 4rem;
+  display: flex;
+  justify-content: center;
+}
+
+.ctaLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-ash);
+  text-decoration: none;
+  padding: 0.8rem 1.6rem;
+  border: 1px solid var(--color-glass-border);
+  border-radius: 999px;
+  backdrop-filter: blur(10px);
+  transition: color 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+.ctaLink:hover {
+  color: var(--color-paper);
+  border-color: rgba(255, 138, 61, 0.4);
+  background: rgba(255, 138, 61, 0.07);
+}
+
+.ctaLink:focus-visible {
+  outline: 2px solid var(--color-ember-soft);
+  outline-offset: 3px;
+}
+
+/* ---------- Responsive -------------------------------------------- */
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .header {
+    margin-bottom: 3.5rem;
+  }
+
+  .cardLink {
+    padding: 2rem 1.6rem 2.2rem;
+  }
+}

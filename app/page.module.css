@@ -1,0 +1,30 @@
+.next {
+  position: relative;
+  z-index: 5;
+  min-height: 100vh;
+  background: var(--color-void-soft);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8vh 6vw;
+  border-top: 1px solid var(--color-glass-border);
+}
+
+.nextEyebrow {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-ember-soft);
+  margin: 0 0 1rem;
+}
+
+.nextHeading {
+  font-family: var(--font-display), serif;
+  font-weight: 500;
+  font-size: clamp(1.6rem, 4vw, 2.6rem);
+  max-width: 20ch;
+  line-height: 1.25;
+  color: var(--color-paper);
+  margin: 0;
+}

@@ -1,0 +1,146 @@
+/* ---------- Section ------------------------------------------------ */
+
+.section {
+  position: relative;
+  z-index: 5;
+  background: var(--color-void-soft);
+  padding: 10vh 6vw 11vh;
+  border-top: 1px solid var(--color-glass-border);
+  overflow: hidden;
+}
+
+.section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 15% 50%, rgba(95, 178, 255, 0.05) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 10%, rgba(167, 139, 250, 0.04) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* ---------- Header ------------------------------------------------- */
+
+.header {
+  max-width: 520px;
+  margin-bottom: 4.5rem;
+}
+
+.eyebrow {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-ember-soft);
+  margin: 0 0 1.2rem;
+}
+
+.heading {
+  font-family: var(--font-display), serif;
+  font-weight: 500;
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  line-height: 1.1;
+  color: var(--color-paper);
+  margin: 0;
+}
+
+.heading em {
+  font-style: italic;
+  color: var(--color-ember-soft);
+}
+
+/* ---------- Groups grid -------------------------------------------- */
+
+.groups {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+/* ---------- Single group ------------------------------------------ */
+
+.group {
+  padding: 2rem 2rem 2.2rem;
+  border: 1px solid var(--color-glass-border);
+  background: var(--color-void);
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.group::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    var(--accent) 0%,
+    color-mix(in srgb, var(--accent) 0%, transparent) 100%
+  );
+  opacity: 0.6;
+}
+
+.group:hover {
+  background: color-mix(in srgb, var(--accent) 5%, var(--color-void));
+  border-color: color-mix(in srgb, var(--accent) 25%, transparent);
+}
+
+.groupLabel {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 1.2rem;
+  opacity: 0.85;
+}
+
+/* ---------- Skill pills ------------------------------------------- */
+
+.skillList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.skill {
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.82rem;
+  color: var(--color-paper);
+  opacity: 0.72;
+  padding: 0.28rem 0.7rem;
+  border: 1px solid var(--color-glass-border);
+  border-radius: 4px;
+  background: rgba(244, 237, 225, 0.04);
+  transition: opacity 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.group:hover .skill {
+  opacity: 0.92;
+  border-color: color-mix(in srgb, var(--accent) 25%, transparent);
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+}
+
+/* ---------- Responsive -------------------------------------------- */
+
+@media (max-width: 960px) {
+  .groups {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .groups {
+    grid-template-columns: 1fr;
+  }
+
+  .group {
+    padding: 1.6rem 1.4rem 1.8rem;
+  }
+}

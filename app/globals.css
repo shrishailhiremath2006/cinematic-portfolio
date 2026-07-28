@@ -1,0 +1,52 @@
+:root {
+  --color-void: #0b0908;
+  --color-void-soft: #14100d;
+  --color-ember: #ff8a3d;
+  --color-ember-soft: #ffb37a;
+  --color-monitor: #5fb2ff;
+  --color-paper: #f4ede1;
+  --color-ash: #9a8f80;
+  --color-glass-border: rgba(244, 237, 225, 0.14);
+
+  --font-display: "Fraunces";
+  --font-body: "Manrope";
+  --font-mono: "JetBrains Mono";
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: var(--color-void);
+  color: var(--color-paper);
+  font-family: var(--font-body), sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
